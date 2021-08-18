@@ -1,25 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import SignUp from "./signUp";
+import Login from "./login";
+import Home from "./home";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Component } from "react";
+import fire from "./fire";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// function App() {
+//   return (
+{
+  /* <Router>
+  <div>
+    <Switch>
+      <Route exact path="/">
+        <SignUp />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/home">
+        <Home />
+      </Route>
+    </Switch>
+  </div>
+</Router>; */
+}
+//   );
+// }
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+    };
+  }
+
+  componentDidMount() {
+    this.authListener();
+  }
+
+  authListener() {
+    fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } else {
+        this.setState({ user: null });
+      }
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.user ? (
+          <Home />
+        ) : (
+          <Router>
+            <div>
+              <Switch>
+                <Route exact path="/">
+                  <SignUp />
+                </Route>
+                <Route path="/login">
+                  <Login />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;
