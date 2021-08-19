@@ -1,13 +1,10 @@
 import TextField from "@material-ui/core/TextField";
-import { flexbox } from "@material-ui/system";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import { Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import { Height, InfoTwoTone } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { Component } from "react";
 import fire from "./fire";
-import { useMediaQuery } from "@material-ui/core";
 
 class signUp extends Component {
   constructor(props) {
@@ -30,7 +27,6 @@ class signUp extends Component {
         console.log(u);
       })
       .catch((err) => {
-        console.log(err);
         alert(err);
       });
   }
@@ -44,7 +40,8 @@ class signUp extends Component {
   render() {
     const inputStyle = {
       width: "26rem",
-      margin: "1.5rem",
+      marginTop: "1.5rem",
+      marginBottom: "1.5rem",
       display: "flex",
     };
 

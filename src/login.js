@@ -1,9 +1,7 @@
 import TextField from "@material-ui/core/TextField";
-import { flexbox } from "@material-ui/system";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import { Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import { Height } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { Component } from "react";
 import fire from "./fire";
@@ -28,7 +26,7 @@ class login extends Component {
         console.log(u);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   }
 
@@ -41,7 +39,8 @@ class login extends Component {
   render() {
     const inputStyle = {
       width: "26rem",
-      margin: "1.5rem",
+      marginTop: "1.5rem",
+      marginBottom: "1.5rem",
       display: "flex",
     };
 
