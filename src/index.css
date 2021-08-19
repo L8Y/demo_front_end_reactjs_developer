@@ -11,9 +11,5 @@
 .home {
   display: flex;
   flex-direction: column;
-}
-
-.input {
-  display: flex;
-  justify-content: center;
+  margin: 0rem;
 }
